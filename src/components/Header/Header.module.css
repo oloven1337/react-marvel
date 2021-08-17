@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    padding: var(--spasing-medium) var(--spasing-large);
+}
+
+.list_container {
+    width: 100%;
+    background-color: var(--color-orange);
+    display: flex;
+    flex-wrap: wrap;
+    margin: var(--spasing-small) 0 0 0;
+    padding: 8px 16px;
+    list-style-type: none;
+    font-size: var(--font-size-header);
+}
+
+.list_container a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: var(--font-size-large);
+}
+

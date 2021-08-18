@@ -2,7 +2,7 @@ import React from "react";
 import notFoundImg from '../../../img/batman.jpg'
 import styles from "./Character.module.css";
 
-const Character = ({character, imgUrl, notFound}) => {
+const Character = ({character, imgUrl, notFound }) => {
 
     if (notFound) {
         return (
@@ -30,4 +30,4 @@ const Character = ({character, imgUrl, notFound}) => {
     )
 }
 
-export default Character
+export default React.memo(Character)

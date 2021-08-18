@@ -5,16 +5,12 @@ import {getApiCharactersOfName} from "../../utils/network";
 import Character from "./Character";
 
 const Main = () => {
-    const [requestText, setRequestText] = React.useState('')
-    const [imgUrl, setImgUrl] = React.useState(hulk)
+    const [requestText, setRequestText] = React.useState('Iron man')
+    const [imgUrl, setImgUrl] = React.useState(null)
     const [character, setCharacter] = React.useState([])
     const [notFound, setNotFound] = React.useState(false)
 
-    const handleOnChange = (event) => setRequestText(event.target.value)
-
-    const handleOnClick = event => {
-        event.preventDefault()
-
+    const request = () => {
         if (requestText !== '') {
             getApiCharactersOfName(requestText)
                 .then((res) => {
@@ -32,6 +28,15 @@ const Main = () => {
                     }
                 })
         }
+    }
+
+    React.useEffect(() => request(), [])
+
+    const handleOnChange = (event) => setRequestText(event.target.value)
+
+    const handleOnClick = event => {
+        event.preventDefault()
+        request()
     }
 
     return (

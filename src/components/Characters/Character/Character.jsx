@@ -1,9 +1,9 @@
 import React from "react";
 import notFoundImg from '../../../img/batman.jpg'
 import styles from "./Character.module.css";
+import Loader from "../../Loader";
 
-const Character = ({character, imgUrl, notFound }) => {
-
+const Character = ({character, imgUrl, notFound}) => {
     if (notFound) {
         return (
             <div className={styles.wrapper}>
@@ -23,7 +23,7 @@ const Character = ({character, imgUrl, notFound }) => {
                             <p className={styles.biography_text}> {character[1].data}</p>
                         </div>
                     )
-                    : <span className={styles.title}>Find your favorite hero!</span>
+                    : <Loader/>
                 }
             </div>
         </div>

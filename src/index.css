@@ -4,7 +4,7 @@
     --color-white: #fff;
     --color-black: #000;
     --color-gray: #808080;
-    --color-red: #e80e27;
+    --color-red: #ff4c4c;
     --color-yellow: #e2c50e;
     --color-orange: #d5a909;
 
@@ -13,6 +13,7 @@
     --spasing-medium: 15px;
     --spasing-large: 20px;
 
+    --font-size-small: 14px;
     --font-size-main: 16px;
     --font-size-subheader: 18px;
     --font-size-header: 20px;

@@ -47,21 +47,11 @@ const Characters = () => {
 
     return (
         <div className={styles.container}>
-            {/*// {<SearchBar*/}
-            {/*// handleOnChange={handleOnChange}*/}
-            {/*// requestText={requestText}*/}
-            {/*// handleOnClick={handleOnClick}/>}*/}
-
-            <form>
-                <h1 className={styles.header}>Find character</h1>
-                <div className={styles.search_wrapper}>
-                    <input className={styles.input} onChange={handleOnChange}
-                           value={requestText} type="text"/>
-                    <button className={styles.button_search} onClick={handleOnClick}>Search</button>
-                </div>
-                <p className={styles.subheader}>for example - Hulk</p>
-
-            </form>
+            {<SearchBar
+                handleOnChange={handleOnChange}
+                requestText={requestText}
+                handleOnClick={handleOnClick}/>}
+            <p className={styles.subheader}>for example - Hulk</p>
             <Character
                 character={character}
                 imgUrl={imgUrl}

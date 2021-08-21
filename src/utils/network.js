@@ -1,6 +1,38 @@
 import axios from 'axios'
 import {API_KEY, URL_CHARACTERS, URL_COMICS} from '../constans/constans'
 
+export const getApiSeriesAll = async (urls) => {
+
+    const resultsUrl = await urls.map(element => {
+        return axios.get(element, {
+            params: {
+                apikey: API_KEY,
+            }
+        })
+    })
+
+    const allPromise = await Promise.all(resultsUrl)
+
+    return allPromise
+
+    // console.log(resultsUrl)
+
+    // resultsUrl.forEach(element => {
+    //     element.then(res => {
+    //         console.log(res)
+    //     })
+    // })
+
+
+    // const da = Promise.all(resultsUrl)
+    //      .then(value => {
+    //          return value.data
+    //      })
+
+    // da.then(res => console.log(res))
+
+}
+
 export const getApiCharactersOfName = async (name) => {
     try {
         const res = await axios.get(URL_CHARACTERS, {
@@ -33,12 +65,12 @@ export const getApiCharactersOfId = async (id) => {
     return res.data
 }
 
-export const getApiComicsOfId = async (id) => {
+export const getApiComics = async (title) => {
     const res = await axios.get(`${URL_COMICS}`, {
         params: {
             apikey: API_KEY,
-            id
+            title
         }
     })
-    return res.data
+    return res.data.data.results
 }

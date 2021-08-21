@@ -2,8 +2,9 @@ import React from "react";
 import notFoundImg from '../../../img/batman.jpg'
 import styles from "./Character.module.css";
 import Loader from "../../Loader";
+import Series from "../Series";
 
-const Character = ({character, imgUrl, notFound}) => {
+const Character = ({character, imgUrl, notFound, series}) => {
     if (notFound) {
         return (
             <div className={styles.wrapper}>
@@ -12,21 +13,23 @@ const Character = ({character, imgUrl, notFound}) => {
             </div>
         )
     }
-
     return (
-        <div className={styles.wrapper}>
-            <img className={styles.img} src={imgUrl} alt=""/>
-            <div>
-                {character.length ? (
-                        <div className={styles.wrapper_biography}>
-                            <h2 className={styles.name}>{character[0].data}</h2>
-                            <p className={styles.biography_text}> {character[1].data}</p>
-                        </div>
-                    )
-                    : <Loader/>
-                }
+        <>
+            <div className={styles.wrapper}>
+                <img className={styles.img} src={imgUrl} alt=""/>
+                <div>
+                    {character.length ? (
+                            <div className={styles.wrapper_biography}>
+                                <h2 className={styles.name}>{character[0].data}</h2>
+                                <p className={styles.biography_text}> {character[1].data}</p>
+                            </div>
+                        )
+                        : <Loader/>
+                    }
+                </div>
             </div>
-        </div>
+            {/*<Series series={series}/>*/}
+        </>
     )
 }
 

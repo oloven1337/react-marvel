@@ -1,0 +1,36 @@
+.container {
+    background-color: var(--color-white);
+    margin: var(--spasing-small) var(--spasing-medium);
+    padding: var(--spasing-small) var(--spasing-small);
+}
+
+.img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border: 6px solid black;
+}
+
+.wrapper {
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.element {
+    display: inline-block;
+}
+
+.wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+    background-color: var(--color-red);
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    background-color: white;
+    box-shadow: inset 0 0 3px var(--color-gray);
+}

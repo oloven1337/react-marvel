@@ -69,8 +69,10 @@ export const getApiComics = async (title) => {
     const res = await axios.get(`${URL_COMICS}`, {
         params: {
             apikey: API_KEY,
-            title
+            title,
+            limit: 30
         }
     })
+    console.log(res.data)
     return res.data.data.results
 }

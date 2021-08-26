@@ -16,15 +16,18 @@ const Character = ({character, imgUrl, notFound, series}) => {
     return (
         <>
             <div className={styles.wrapper}>
-                <img className={styles.img} src={imgUrl} alt=""/>
+                {imgUrl ? <img className={styles.img} src={imgUrl} alt=""/> : <Loader/>}
                 <div>
-                    {character.length ? (
+                    {character.length
+                        ? (
                             <div className={styles.wrapper_biography}>
                                 <h2 className={styles.name}>{character[0].data}</h2>
                                 <p className={styles.biography_text}> {character[1].data}</p>
                             </div>
                         )
-                        : <Loader/>
+                        : <div className={styles.loader}>
+                            <Loader/>
+                        </div>
                     }
                 </div>
             </div>

@@ -1,5 +1,6 @@
 .wrapper {
     display: flex;
+    justify-content: space-around;
 }
 
 .wrapper_biography {
@@ -32,6 +33,10 @@
     font-size: var(--font-size-header);
     margin-left: 20px;
     font-weight: bold;
+}
+
+.loader {
+
 }
 
 @media (max-width: 768px) {

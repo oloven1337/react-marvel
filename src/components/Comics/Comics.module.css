@@ -4,11 +4,19 @@
     padding: var(--spasing-small) var(--spasing-small);
 }
 
+.subheader {
+    color: var(--color-gray);
+    font-weight: bold;
+    font-size: 12px;
+    margin: 10px 0 20px 0;
+}
+
 .img {
     width: 300px;
     height: 450px;
     object-fit: cover;
     border: 6px solid black;
+    margin: 0 2px;
 }
 
 .wrapper {
@@ -20,6 +28,7 @@
 
 .element {
     display: inline-block;
+    cursor: pointer;
 }
 
 .wrapper::-webkit-scrollbar {

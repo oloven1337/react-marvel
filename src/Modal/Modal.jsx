@@ -4,9 +4,8 @@ import close from '../img/close.svg'
 import styles from './Modal.module.css'
 
 const Modal = ({active, setModal, data}) => {
-    console.log(data)
     const {description, images, urls, title} = data
-    console.log(urls[0])
+
     return (
         <div className={active ? cn(styles.modal, styles.active) : styles.modal} onClick={() => setModal(false)}>
             <div className={styles.modal_content} onClick={event => event.stopPropagation()}>

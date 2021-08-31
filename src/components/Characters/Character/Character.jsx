@@ -4,7 +4,7 @@ import styles from "./Character.module.css";
 import Loader from "../../Loader";
 import Series from "../Series";
 
-const Character = ({character, imgUrl, notFound, series}) => {
+const Character = ({name, imgUrl, notFound, series, description}) => {
     if (notFound) {
         return (
             <div className={styles.wrapper}>
@@ -18,11 +18,11 @@ const Character = ({character, imgUrl, notFound, series}) => {
             <div className={styles.wrapper}>
                 {imgUrl ? <img className={styles.img} src={imgUrl} alt=""/> : <Loader/>}
                 <div>
-                    {character.length
+                    {name
                         ? (
                             <div className={styles.wrapper_biography}>
-                                <h2 className={styles.name}>{character[0].data}</h2>
-                                <p className={styles.biography_text}> {character[1].data}</p>
+                                <h2 className={styles.name}>{name}</h2>
+                                <p className={styles.biography_text}> {description}</p>
                             </div>
                         )
                         : <div className={styles.loader}>

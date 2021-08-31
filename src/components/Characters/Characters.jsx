@@ -1,49 +1,39 @@
-import React from "react";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import Character from './Character'
+import SearchBar from '../../UI/SearchBar/SearchBar'
+import Loader from '../Loader/'
+
 import styles from './Characters.module.css'
-import {getApiCharactersOfName} from "../../utils/network";
-import Character from "./Character";
-import SearchBar from "../../UI/SearchBar/SearchBar";
+import { getCharacter } from '../../store/actions/characters'
+import { isLoaded, notFound,data } from '../../store/selectors/characters'
+
 
 const Characters = () => {
     const [requestText, setRequestText] = React.useState('Iron man')
-    const [imgUrl, setImgUrl] = React.useState(null)
-    const [character, setCharacter] = React.useState([])
-    const [notFound, setNotFound] = React.useState(false)
-    const [series, setSeries] = React.useState([])
 
-    const request = React.useCallback(() => {
-        if (requestText !== '') {
-            getApiCharactersOfName(requestText)
-                .then((res) => {
-                    if (!res) {
-                        setNotFound(true)
-                        console.log('такого персонажа нет!')
-                    } else {
-                        setNotFound(false)
-                        const results = res.data.results[0]
-                        const image = results.thumbnail.path + '.jpg'
-                        setImgUrl(image)
-                        setSeries(results.series.items)
-                        setCharacter([
-                            {title: 'Name', data: results.name},
-                            {title: 'Description', data: results.description}
-                        ])
-                    }
-                })
-        }
-    }, [requestText])
+    const dispatch = useDispatch()
+    const isLoadedSelector = useSelector(isLoaded)
+    const notFoundSelector = useSelector(notFound)
+    const { name, thumbnail = '', series, description } = useSelector(data)
+    const imgUrl = thumbnail.path + '.jpg'
 
     React.useEffect(() => {
-        request()
-    }, [])
-
+        dispatch(getCharacter(requestText))
+    }, [dispatch])
 
     const handleOnChange = (event) => setRequestText(event.target.value)
 
-    const handleOnClick = React.useCallback(event => {
+    const handleOnClick = (event) => {
         event.preventDefault()
-        request()
-    }, [request])
+
+        dispatch(getCharacter(requestText))
+    }
+
+    if (isLoadedSelector) {
+        return <Loader/>
+    }
 
     return (
         <div className={styles.container}>
@@ -53,10 +43,11 @@ const Characters = () => {
                 handleOnClick={handleOnClick}/>}
             <p className={styles.subheader}>for example - Hulk</p>
             <Character
-                character={character}
+                name={name}
                 imgUrl={imgUrl}
-                notFound={notFound}
                 series={series}
+                notFound={notFoundSelector}
+                description={description}
             />
         </div>
     )

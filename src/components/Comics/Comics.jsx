@@ -18,9 +18,7 @@ const Comics = () => {
     const isLoaded = useSelector(isLoadedSelector)
     const comics = useSelector(data)
 
-    const handleOnChange = (e) => {
-        setRequestText(e.target.value)
-    }
+    const handleOnChange = (e) => setRequestText(e.target.value)
 
     React.useEffect(() => {
         dispatch(getComics(requestText))

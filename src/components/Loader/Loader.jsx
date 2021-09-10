@@ -1,6 +1,10 @@
-import React from 'react';
+import React from 'react'
 import loader from './img/loader.svg'
 
-const Loader = () => <img src={loader} alt="Loading..."/>
+const Loader = () => (
+    <div style={{ textAlign: 'center' }}>
+        <img src={loader} alt="Loading..."/>
+    </div>
+)
 
-export default Loader;
+export default Loader

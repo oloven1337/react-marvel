@@ -1,37 +1,37 @@
 import axios from 'axios'
 import {API_KEY, URL_CHARACTERS, URL_COMICS} from '../constans/constans'
 
-export const getApiSeriesAll = async (urls) => {
-
-    const resultsUrl = await urls.map(element => {
-        return axios.get(element, {
-            params: {
-                apikey: API_KEY,
-            }
-        })
-    })
-
-    const allPromise = await Promise.all(resultsUrl)
-
-    return allPromise
-
-    // console.log(resultsUrl)
-
-    // resultsUrl.forEach(element => {
-    //     element.then(res => {
-    //         console.log(res)
-    //     })
-    // })
-
-
-    // const da = Promise.all(resultsUrl)
-    //      .then(value => {
-    //          return value.data
-    //      })
-
-    // da.then(res => console.log(res))
-
-}
+// export const getApiSeriesAll = async (urls) => {
+//
+//     const resultsUrl = await urls.map(element => {
+//         return axios.get(element, {
+//             params: {
+//                 apikey: API_KEY,
+//             }
+//         })
+//     })
+//
+//     const allPromise = await Promise.all(resultsUrl)
+//
+//     return allPromise
+//
+//     // console.log(resultsUrl)
+//
+//     // resultsUrl.forEach(element => {
+//     //     element.then(res => {
+//     //         console.log(res)
+//     //     })
+//     // })
+//
+//
+//     // const da = Promise.all(resultsUrl)
+//     //      .then(value => {
+//     //          return value.data
+//     //      })
+//
+//     // da.then(res => console.log(res))
+//
+// }
 
 export const getApiCharactersOfName = async (name) => {
     try {
@@ -73,6 +73,5 @@ export const getApiComics = async (title) => {
             limit: 30
         }
     })
-    console.log(res.data)
     return res.data.data.results
 }

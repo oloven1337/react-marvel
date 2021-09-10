@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import cn from 'classnames'
 import close from '../img/close.svg'
 import styles from './Modal.module.css'
 
-const Modal = ({active, setModal, data}) => {
-    const {description, images, urls, title} = data
+const Modal = ({ active, setModal, data }) => {
+    const { description, images, urls, title } = data
 
     return (
         <div className={active ? cn(styles.modal, styles.active) : styles.modal} onClick={() => setModal(false)}>
@@ -17,12 +17,12 @@ const Modal = ({active, setModal, data}) => {
                     <p className={styles.description}>
                         {description ? description : 'There is no data about the comic :('}
                     </p>
-                    <a className={styles.buy_link} href={urls[0].url} target="_blank">BUY</a>
+                    <a className={styles.buy_link} href={urls[0].url} target="_blank" rel="noreferrer">BUY</a>
                 </div>
                 <img onClick={() => setModal(false)} className={styles.close_modal} src={close} alt="close"/>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Modal;
+export default Modal

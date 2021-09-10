@@ -1,38 +1,43 @@
-import React from "react";
-import {getApiComics} from "../../utils/network"
-import styles from './Comics.module.css'
-import SearchBar from "../../UI/SearchBar/SearchBar";
-import Loader from "../Loader";
-import Modal from "../../Modal/Modal";
+import React from 'react'
 
+import SearchBar from '../../UI/SearchBar/SearchBar'
+import Loader from '../Loader'
+import Modal from '../../Modal/Modal'
+import { getComics } from '../../store/actions/comics'
+import { useDispatch, useSelector } from 'react-redux'
+import { data, isLoadedSelector } from '../../store/selectors/comics'
+
+import styles from './Comics.module.css'
 
 const Comics = () => {
     const [requestText, setRequestText] = React.useState('Hulk')
-    const [comics, setComics] = React.useState([])
     const [modal, setModal] = React.useState(false)
     const [comicsData, setComicsData] = React.useState({})
+
+    const dispatch = useDispatch()
+    const isLoaded = useSelector(isLoadedSelector)
+    const comics = useSelector(data)
 
     const handleOnChange = (e) => {
         setRequestText(e.target.value)
     }
 
-    const request = () => {
-        getApiComics(requestText).then(r => {
-            setComics(r)
-        })
-    }
     React.useEffect(() => {
-        request()
-    }, [])
+        dispatch(getComics(requestText))
+    }, [dispatch])
 
     const handleOnClick = (e) => {
         e.preventDefault()
-        request()
+        dispatch(getComics(requestText))
     }
 
     const handlerElement = (element) => {
         setModal(true)
         setComicsData(element)
+    }
+
+    if (isLoaded) {
+        return <Loader/>
     }
 
     return (
@@ -47,20 +52,20 @@ const Comics = () => {
                     <div className={styles.wrapper}>
                         {comics.map((element) => (
                             <div onClick={() => handlerElement(element)} className={styles.element} key={element.id}>
-                                <img className={styles.img} src={element.images[0].path + '.jpg'} alt=""/>
+                                <img className={styles.img} src={element.images[0]?.path + '.jpg'} alt=""/>
                                 <h4>{element.title}</h4>
                             </div>
                         ))}
                     </div>
                 ) : 'Loading...'}
             </div>
-            {modal ?
+            {modal && (
                 <Modal
                     active={modal}
                     setModal={setModal}
                     data={comicsData}
                 />
-                : null}
+            )}
         </div>
     )
 }

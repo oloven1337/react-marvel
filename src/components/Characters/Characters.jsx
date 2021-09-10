@@ -3,11 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Character from './Character'
 import SearchBar from '../../UI/SearchBar/SearchBar'
-import Loader from '../Loader/'
+import { getCharacter } from '../../store/actions/characters'
+import { isLoaded, notFound, data } from '../../store/selectors/characters'
 
 import styles from './Characters.module.css'
-import { getCharacter } from '../../store/actions/characters'
-import { isLoaded, notFound,data } from '../../store/selectors/characters'
 
 
 const Characters = () => {
@@ -31,10 +30,6 @@ const Characters = () => {
         dispatch(getCharacter(requestText))
     }
 
-    if (isLoadedSelector) {
-        return <Loader/>
-    }
-
     return (
         <div className={styles.container}>
             {<SearchBar
@@ -45,6 +40,7 @@ const Characters = () => {
             <Character
                 name={name}
                 imgUrl={imgUrl}
+                isLoadedSelector={isLoadedSelector}
                 series={series}
                 notFound={notFoundSelector}
                 description={description}

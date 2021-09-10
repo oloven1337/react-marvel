@@ -1,10 +1,15 @@
-import React from "react";
+import React from 'react'
 import notFoundImg from '../../../img/batman.jpg'
-import styles from "./Character.module.css";
-import Loader from "../../Loader";
-import Series from "../Series";
+import styles from './Character.module.css'
+import Loader from '../../Loader'
+import Series from '../Series'
 
-const Character = ({name, imgUrl, notFound, series, description}) => {
+const Character = ({ name, imgUrl, notFound, series, description, isLoadedSelector }) => {
+
+    if (isLoadedSelector) {
+        return <Loader/>
+    }
+
     if (notFound) {
         return (
             <div className={styles.wrapper}>

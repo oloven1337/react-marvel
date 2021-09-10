@@ -1,8 +1,7 @@
 import React from 'react'
-import notFoundImg from '../../../img/batman.jpg'
+import notFoundImg from '../../../assets/batman.jpg'
 import styles from './Character.module.css'
-import Loader from '../../Loader'
-import Series from '../Series'
+import Loader from '../../../components/Loader'
 
 const Character = ({ name, imgUrl, notFound, series, description, isLoadedSelector }) => {
 

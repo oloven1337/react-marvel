@@ -1,8 +1,8 @@
 import React from 'react'
 
 import SearchBar from '../../UI/SearchBar/SearchBar'
-import Loader from '../Loader'
-import Modal from '../../Modal/Modal'
+import Loader from '../../components/Loader'
+import Modal from '../../components/Modal/Modal'
 import { getComics } from '../../store/actions/comics'
 import { useDispatch, useSelector } from 'react-redux'
 import { data, isLoadedSelector } from '../../store/selectors/comics'

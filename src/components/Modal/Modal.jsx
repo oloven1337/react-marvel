@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import close from '../img/close.svg'
+import close from '../../assets/close.svg'
 import styles from './Modal.module.css'
 
 const Modal = ({ active, setModal, data }) => {

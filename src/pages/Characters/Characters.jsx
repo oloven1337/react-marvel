@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Character from './Character'
-import SearchBar from '../../UI/SearchBar/SearchBar'
+import SearchBar from '../../components/SearchBar/SearchBar'
 import { getCharacter } from '../../store/actions/characters'
 import { isLoaded, notFound, data } from '../../store/selectors/characters'
 

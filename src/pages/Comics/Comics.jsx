@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SearchBar from '../../UI/SearchBar/SearchBar'
+import SearchBar from '../../components/SearchBar/SearchBar'
 import Loader from '../../components/Loader'
 import Modal from '../../components/Modal/Modal'
 import { getComics } from '../../store/actions/comics'

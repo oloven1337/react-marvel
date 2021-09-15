@@ -1,6 +1,8 @@
 import React from 'react'
 import cn from 'classnames'
+
 import close from '../../assets/close.svg'
+
 import styles from './Modal.module.css'
 
 const Modal = ({ active, setModal, data }) => {
@@ -15,7 +17,7 @@ const Modal = ({ active, setModal, data }) => {
                 </div>
                 <div className={styles.wrapper}>
                     <p className={styles.description}>
-                        {description ? description : 'There is no data about the comic :('}
+                        {description ? description : 'There is no data about the comics :('}
                     </p>
                     <a className={styles.buy_link} href={urls[0].url} target="_blank" rel="noreferrer">BUY</a>
                 </div>

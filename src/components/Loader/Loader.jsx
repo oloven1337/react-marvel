@@ -1,5 +1,6 @@
 import React from 'react'
-import loader from './img/loader.svg'
+
+import loader from '../../assets/loader.svg'
 
 const Loader = () => (
     <div style={{ textAlign: 'center' }}>

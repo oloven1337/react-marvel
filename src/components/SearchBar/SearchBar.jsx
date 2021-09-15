@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './SearchBar.module.css'
 
 const SearchBar = ({handleOnChange, requestText, handleOnClick}) => (
